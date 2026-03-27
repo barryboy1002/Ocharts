@@ -2,6 +2,7 @@
 #include <map>
 #include <algorithm>
 #include <string>
+#include <type_traits>
 
 template <typename x_data>
 struct data{
@@ -18,14 +19,16 @@ struct data{
     }
     int max_value(){
       auto best  = std::max_element(data_cont.begin(), data_cont.end(), [](
-            std::pair<std::string,x_data>& a,std::pair<std::string, x_data>&b 
-            ){ return a.second < b.second
+            const std::pair<std::string,x_data>& a,const std::pair<std::string, x_data>&b 
+            ){ return a.second < b.second;
           }
           );
-     if constexpr(std::is_same_v<dcont->x_data,int>){
-        return *best;
+     if constexpr(std::is_same_v<x_data,int>){
+        return best->second;
      }else{
        return 0;
      }
   }
-}
+};
+
+void draw_graph(const char point_char, data<int>* dcont);

@@ -3,36 +3,41 @@
 #include "../data/data.h"
 #include <cstdlib>
 
-#define WIDTH = 100 HEIGHT = 100
+#define WIDTH  50 
+#define HEIGHT  30
 
 
 void draw_axes(int xspace,int  yspace){
-  for (int i = 0 ; i >= (xspace-2);i++){
+  for (int i = 0 ; i < (xspace-2);i++){
     printf("\t | \n");
   }
-  for (int i = 0 ; i >= (xspace-2); i ++){
+  for (int j = 0 ; j < (yspace-2);j++){
     printf("_");
   }
 }
 
 
-void draw_graph(char point_char, data * dcont ){ 
+void draw_graph(char point_char, data<int> * dcont ){ 
   //draw the actual graph 
 
   //draw the axes 
   draw_axes(WIDTH,HEIGHT);
   //get the scale
- 
+  int max_data = dcont->max_value();
+  std::cout << max_data <<"\n";
   int xscale = max_data/HEIGHT;
 
   for (auto& pair : dcont->data_cont){
-    printf("%s \t",pair.first);
+    printf(" label ->%s \t",pair.first);
   }
+  /*
   for(auto& pair : dcont->data_cont){
-    std::cout<<"\e[A (0x1B 0x91 0x41)";
-    printf("\t %c",point_char);
+    for (int d = 0 ; d < xscale;d++){
+      std::cout<<"\e[A";
+      printf("%c",point_char);
+    }
   }
-
+*/
 
 }
 
