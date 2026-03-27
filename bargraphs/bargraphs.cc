@@ -37,6 +37,7 @@ void draw_graph(char point_char, data<int> * dcont ){
     }
     printf("\e[%dB",scale);
   }
+  std::cout << "\n";
   
 
 
