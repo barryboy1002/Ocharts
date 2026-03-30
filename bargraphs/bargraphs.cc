@@ -17,7 +17,7 @@ void draw_axes(int xspace,int  yspace){
 }
 
 
-void draw_graph(char point_char, data<int> * dcont ){ 
+void draw_graph(const std::string point_char, data<int> * dcont ){ 
   //draw the actual graph 
 
   //draw the axes 
@@ -33,7 +33,7 @@ void draw_graph(char point_char, data<int> * dcont ){
     for (int d = 0 ; d < scale;d++){
       std::cout<<"\e[A";
       std::cout << point_char;
-      std::cout << "\e[D";
+      std::cout << "\e[D"<<"\e[D";
     }
     printf("\e[%dB",scale);
   }

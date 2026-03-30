@@ -8,7 +8,7 @@ template <typename x_data>
 struct data{
   public:
     x_data points;
-    std::string label;
+    const std::string label;
     std::map<std::string,x_data> data_cont;
 
     data(std::string dlabel, x_data value):points{value}, label{dlabel}{}
@@ -31,4 +31,4 @@ struct data{
   }
 };
 
-void draw_graph(const char point_char, data<int>* dcont);
+void draw_graph(const std::string  point_char, data<int>* dcont);
